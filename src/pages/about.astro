@@ -14,18 +14,33 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 <Layout title="About">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="title">A propos</Fragment>
+      <Fragment slot="desc">
+        Quelques mots à mon sujet et à celui de ce projet
+      </Fragment>
     </Sectionhead>
 
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Astro.
-      </h2>
+      <h2 class="font-bold text-3xl text-gray-800">Qui suis-je ?</h2>
       <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
+        Jeune homme basé en Belgique. Je suis passionné par le web et l'open
+        source. Après un diplôme en informatique et système, j'ai travaillé
+        plusieurs années en collaboration avec différentes startups.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Aujourd'hui, je travaille en tant que support technique pour
+        l'UCLouvain. J'ai la chance de pouvoir évoluer dans un vaste
+        environnement, avec des technologies très variées.
+      </p>
+      <h2 class="font-bold text-3xl text-gray-800">Quoi ?</h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Sur mon temps libre, j'essaye de continuer de développer mes compétences
+        en informatique dans divers, comme la programmation, l'administration
+        système ou les réseaux.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        J'ai créé cette plateforme pour transmettre mes connaissances et me
+        faire un petit portfolio.
       </p>
     </div>
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
@@ -47,9 +62,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
             </div>
 
             <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">
-                {teamMemberEntry.data.name}
-              </h2>
+              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
               <h3 class="text-sm text-slate-500">
                 {teamMemberEntry.data.title}
               </h3>
