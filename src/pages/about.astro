@@ -19,36 +19,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
         Quelques mots à mon sujet et à celui de ce projet
       </Fragment>
     </Sectionhead>
-
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">Qui ?</h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        Jeune basé en Belgique, passionné par le web et la technologie.
-      </p>
-      <p class="text-lg leading-relaxed text-slate-500">
-        Après avoir achevé deux bachelier (un en psychologie et sciences de
-        l'éducation, et l'autre en informatique et système) j'ai travaillé
-        plusieurs années en collaboration avec différentes startups.
-      </p>
-      <p class="text-lg leading-relaxed text-slate-500">
-        Aujourd'hui, je fais partie d'une équipe de support technique au service
-        d'une grande institution. J'essaye d'apporter mon aide au quotidien pour
-        résoudre différents soucis techniques liés à l'informatique et aux
-        réseaux. J'ai la chance de pouvoir évoluer dans un vaste environnement,
-        une infrastructure complexe, avec des technologies très variées.
-      </p>
-      <p class="text-lg leading-relaxed text-slate-500">
-        Sur mon temps libre, j'essaye de continuer de développer mes compétences
-        en programmation, en administration système et réseau. C
-      </p>
-      <h2 class="font-bold text-3xl text-gray-800">Quoi ?</h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        J'ai créé cette petite plateforme dans le but de m'aider à structurer
-        mes connaissances, à les intégrer et à les rendre disponible au moi du
-        passé à qui elles auraient pu servir.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+    <div class="grid md:grid-cols-1 gap-10 mx-auto max-w-sm mt-12">
       {
         publishedTeamMembers.map((teamMemberEntry) => (
           <div class="group">
@@ -75,6 +46,43 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
           </div>
         ))
       }
+    </div>
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="font-bold text-3xl text-gray-800">Qui ?</h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Jeune homme passionné par le web, la technologie et le sport.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Bachelier en informatique et systèmes, et en psychologie et sciences de
+        l'éducation.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Web développeur reconverti en support technique pour une grande
+        institution.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Toujours en quête de nouvelles connaissance et compétences.
+      </p>
+      <h2 class="font-bold text-3xl text-gray-800 mt-8">Quoi ?</h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Présentation de mes projets et de mon parcours.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Carnet de note de mes expériences, apprentissages et de mes réflexions.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Journal de bord de mon épopée technologiques.
+      </p>
+
+      <h2 class="font-bold text-3xl text-gray-800 mt-8">Pourquoi ?</h2>
+
+      <p class="text-lg leading-relaxed text-slate-500">
+        Une motivation pour créer, apprendre et développer mes compétences.
+        <p class="text-lg leading-relaxed text-slate-500">
+          Rassembler mes idées et découvertes, les structurer, les intégrer, et
+          finalement à les partager.
+        </p>
+      </p>
     </div>
   </Container>
 </Layout>

@@ -3,6 +3,49 @@ import { Picture } from "@astrojs/image/components";
 import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
+
+const tags = [
+  {
+    name: "Web",
+    color: "bg-blue-500",
+    emoji: "🌐",
+  },
+  {
+    name: "Code",
+    color: "bg-green-500",
+    emoji: "📜",
+  },
+  {
+    name: "IA",
+    color: "bg-yellow-500",
+    emoji: "🤖",
+  },
+  {
+    name: "Réseaux",
+    color: "bg-purple-500",
+    emoji: "🖧",
+  },
+  {
+    name: "Sécurité",
+    color: "bg-red-500",
+    emoji: "🔒",
+  },
+  {
+    name: "DevOps",
+    color: "bg-indigo-500",
+    emoji: "🚀",
+  },
+  {
+    name: "Cloud",
+    color: "bg-pink-500",
+    emoji: "☁️",
+  },
+  {
+    name: "Data",
+    color: "bg-gray-500",
+    emoji: "📊",
+  },
+];
 ---
 
 <main
@@ -20,24 +63,33 @@ import { Icon } from "astro-icon";
   </div>
   <div>
     <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      class="text-5xl font-bold lg:tracking-tight xl:tracking-tighter relative">
+      <span class="z-20">JPire.dev</span>
+      <canvas
+        id="tags-canva"
+        class="animate-spin-slow absolute -top-14 -right-5 z-0 mx-auto"
+        style="z-index: -1"
+        width="175"
+        height="175"></canvas>
     </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
-    </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+    <!-- A polygon shaped  -->
+    <div id="tags" data-tags={JSON.stringify(tags)} class="hidden"></div>
 
-        Download for Free
+    <!-- <p class="text-lg mt-4 text-slate-600 max-w-xl flex gap-2">
+      {
+        tags.map((tag) => (
+          <span
+            class={`${tag.color} cursor-pointer bg-opacity-25 hover:bg-opacity-50 rounded-2xl bg-gray-300 py-1 px-2 items-center justify-between`}>
+            {tag.emoji}
+            {tag.name}
+          </span>
+        ))
+      }
+    </p> -->
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <Link href="/contact" class="flex gap-1 items-center justify-center">
+        <Icon class="text-white w-4 h-4" name="bx:bxs-message-rounded-detail" />
+        Contact
       </Link>
       <Link
         size="lg"
@@ -47,8 +99,54 @@ import { Icon } from "astro-icon";
         class="flex gap-1 items-center justify-center"
         target="_blank">
         <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+        GitHub
       </Link>
     </div>
+    <script>
+      const canvas = document.getElementById("tags-canva");
+      const tags = JSON.parse(
+        document.getElementById("tags")?.dataset?.tags || "[]"
+      );
+      const canva_width = canvas?.attributes.width.value;
+      let numberOfSides = tags.length,
+        size = canva_width / 3,
+        Xcenter = canva_width / 2,
+        Ycenter = canva_width / 2,
+        tag_size = canva_width / 12;
+
+      const ctx = canvas?.getContext("2d");
+      ctx.font = "12px Arial";
+      ctx.fillStyle = "#000000";
+
+      ctx.beginPath();
+      ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
+      for (var i = 1; i <= numberOfSides; i += 1) {
+        ctx.lineTo(
+          Xcenter + size * Math.cos((i * 2 * Math.PI) / numberOfSides),
+          Ycenter + size * Math.sin((i * 2 * Math.PI) / numberOfSides)
+        );
+      }
+      ctx.stroke();
+      tags.forEach((tag, index) => {
+        const angle = (index * 2 * Math.PI) / numberOfSides;
+        const x = Xcenter + size * Math.cos(angle);
+        const y = Ycenter + size * Math.sin(angle);
+        // create a circle tag with its name and its emoji
+        ctx.beginPath();
+        ctx.arc(x, y, tag_size, 0, 2 * Math.PI);
+        ctx.fillStyle = "#cecece";
+        ctx.fill();
+        ctx.fillStyle = "#000000";
+        ctx.fillText(`${tag.emoji}`, x - 8, y + 5);
+        // outline the circle
+        ctx.beginPath();
+        ctx.arc(x, y, tag_size, 0, 2 * Math.PI);
+        ctx.stroke();
+      });
+
+      ctx.strokeStyle = "#000000";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    </script>
   </div>
 </main>
